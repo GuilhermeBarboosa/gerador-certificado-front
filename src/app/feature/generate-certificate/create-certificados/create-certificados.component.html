@@ -1,0 +1,93 @@
+<app-spinner></app-spinner>
+
+<h1 class="flex justify-center">Gerador de Certificados</h1>
+
+<form [formGroup]="certificadoForm">
+  <div class="example-container">
+    <!-- <div class="w-full">
+      <mat-form-field class="w-full">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker" class="w-full">
+          <input matStartDate formControlName="dataInicio" required>
+          <input matEndDate formControlName="dataFim" required>
+        </mat-date-range-input>
+        <mat-hint>{{getDateFormatString()}}</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div> -->
+
+    <div>
+      <!-- <mat-form-field class="w-full">
+        <mat-label>Horas totais do curso</mat-label>
+        <input matInput type="number" formControlName="qtdHoras" required>
+        @if (this.certificadoForm.get("qtdHoras")?.errors) {
+          <mat-error>{{getErrorMessage()}}</mat-error>
+        }
+      </mat-form-field> -->
+
+      <mat-form-field class="w-full">
+        <mat-label>Nome do curso</mat-label>
+        <input matInput type="text" formControlName="nomeCurso" required />
+        @if (this.certificadoForm.get("nomeCurso")?.errors) {
+        <mat-error>{{ getErrorMessage() }}</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="mb-3 w-full flex justify-center">
+        <div>
+          <label for="urlDadosInput" class="form-label example-label"
+            >Dados</label
+          >
+          <input
+            placeholder="dados"
+            type="file"
+            class="form-control flex justify-center"
+            formControlName="urlDados"
+            (change)="onFileSelected($event, 'urlDados')"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3 w-full flex justify-center">
+        <div>
+          <label for="urlImgInput" class="form-label example-label"
+            >Imagem de fundo</label
+          >
+          <input
+            placeholder="imagem"
+            type="file"
+            class="form-control flex justify-center"
+            formControlName="urlImg"
+            (change)="onFileSelected($event, 'urlImg')"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3 w-full flex justify-center">
+        <div>
+          <label for="urlImgInput" class="form-label example-label"
+            >Imagem de verso</label
+          >
+          <input
+            placeholder="imagem"
+            type="file"
+            class="form-control flex justify-center"
+            formControlName="urlVerso"
+            (change)="onFileSelected($event, 'urlVerso')"
+          />
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button
+          class="concluir-button text-white w-50 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none"
+          [disabled]="certificadoForm.invalid"
+          (click)="save()"
+        >
+          Gerar
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
